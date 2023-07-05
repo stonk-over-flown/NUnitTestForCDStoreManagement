@@ -43,6 +43,11 @@ namespace NUnitTestingProject.Test_Package
                 PhoneNumber = "0908256762",
             };
             yield return new TestCaseData(acc3, "Login Successfully!" + "(" + acc3.UserName + ")");
+            AccountModel acc4 = new AccountModel()
+            {
+               
+            };
+            yield return new TestCaseData(acc4, "Login Successfully!" + "(" + acc4.UserName + ")");
         }
 
         [Test]
