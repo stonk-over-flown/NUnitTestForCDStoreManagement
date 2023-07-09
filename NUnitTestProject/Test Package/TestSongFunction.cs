@@ -37,7 +37,7 @@ namespace NUnitTestingProject.Test_Package
 
         [Test]
         [TestCaseSource(nameof(DurationRegex))]
-        public void CheckLogin_ReturnsExpectedResult(string s, string expectedResult)
+        public void CheckSongDuration(string s, string expectedResult)
         {
             var result = SongService.checkRegex(s);
 
