@@ -1,11 +1,12 @@
 ﻿using NUnitTestForCDStoreManagement.Model;
+using System.Security.Principal;
 
 namespace NUnitTestingProject.Test_Package
 {
     [TestFixture]
     public class TestUser
     {
-        private static IEnumerable<TestCaseData> AccountLoginTestCases()
+        private static IEnumerable<TestCaseData> AccountLoginSuccessTestCases()
         {
             AccountModel acc1 = new AccountModel()
             {
@@ -50,6 +51,52 @@ namespace NUnitTestingProject.Test_Package
             };
             yield return new TestCaseData(acc4, "Please enter username and password" + "(" + acc4.UserName + ")");
         }
+        private static IEnumerable<TestCaseData> AccountLoginFailTestCases()
+        {
+            AccountModel acc1 = new AccountModel()
+            {
+                AccountId = 1,
+                UserName = "admin",
+                PassWord = "abc123",
+                RoleId = "MG",
+                FullName = "Administrator",
+                Email = "cdstore@gmail.com",
+                Address = "FPT University",
+                PhoneNumber = "0886647866",
+            };
+            yield return new TestCaseData(acc1, "Login Failed! Try Again " + "(" + acc1.UserName + ")");
+            AccountModel acc2 = new AccountModel()
+            {
+                AccountId = 2,
+                UserName = "trungtin962k@gmail.com",
+                PassWord = "962000",
+                RoleId = "EM",
+                FullName = "Nguyen Trung Tin",
+                Email = "trungtin9620@gmail.com",
+                Address = "Thu Duc City",
+                PhoneNumber = "0913898913",
+            };
+
+            yield return new TestCaseData(acc2, "Login Failed! Try Again " + "(" + acc2.UserName + ")");
+            AccountModel acc3 = new AccountModel()
+            {
+                AccountId = 3,
+                UserName = "khangmk",
+                PassWord = "khang1215",
+                RoleId = "EM",
+                FullName = "Nguyen Minh Khang",
+                Email = "khangnm11@gmail.com",
+                Address = "Vung Tau",
+                PhoneNumber = "0908256762",
+            };
+            yield return new TestCaseData(acc3, "Login Failed! Try Again " + "(" + acc3.UserName + ")");
+            AccountModel acc4 = new AccountModel()
+            {
+
+            };
+            yield return new TestCaseData(acc4, "Please enter username and password" + "(" + acc4.UserName + ")");
+        }
+
         private static IEnumerable<TestCaseData> PhoneNumberTestCases()
         {
             string phoneNo1 = "+84123456789";
@@ -103,8 +150,16 @@ namespace NUnitTestingProject.Test_Package
             yield return new TestCaseData(acc3, "Welcome " + acc3.FullName);
         }
         [Test]
-        [TestCaseSource(nameof(AccountLoginTestCases))]
+        [TestCaseSource(nameof(AccountLoginSuccessTestCases))]
         public void CheckLogin_ReturnsExpectedResult(AccountModel account, string expectedResult)
+        {
+            var result = AccountService.Login(account);
+
+            Assert.AreEqual(expectedResult, result);
+        }
+        [Test]
+        [TestCaseSource(nameof(AccountLoginFailTestCases))]
+        public void CheckFailedLogin_ReturnsExpectedResult(AccountModel account, string expectedResult)
         {
             var result = AccountService.Login(account);
 
