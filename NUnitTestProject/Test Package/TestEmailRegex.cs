@@ -2,6 +2,7 @@
 
 namespace NUnitTestingProject.Test_Package
 {
+    [TestFixture]
     public class TestCheckEmailRegex
     {
         [TestCase("example@fpt.edu.vn", true)]

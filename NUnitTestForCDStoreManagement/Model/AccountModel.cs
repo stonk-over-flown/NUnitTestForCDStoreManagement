@@ -78,7 +78,7 @@ namespace NUnitTestForCDStoreManagement.Model
         {
             if (string.IsNullOrEmpty(account.UserName) && string.IsNullOrEmpty(account.PassWord))
             {
-                return "Please enter username and password";
+                return "Please enter username and password" + "(" + account.UserName + ")";
             }
             else
             {

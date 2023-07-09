@@ -2,6 +2,7 @@
 
 namespace NUnitTestingProject.Test_Package
 {
+    [TestFixture]
     public class TestCheckSongDurationRegex
     {
         private static IEnumerable<TestCaseData> DurationRegex()

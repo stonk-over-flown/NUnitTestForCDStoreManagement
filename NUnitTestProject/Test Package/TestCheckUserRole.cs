@@ -2,6 +2,7 @@
 
 namespace NUnitTestingProject.Test_Package
 {
+    [TestFixture]
     public class TestCheckUserRole
     {
         private static IEnumerable<TestCaseData> UserRoleTestCases()

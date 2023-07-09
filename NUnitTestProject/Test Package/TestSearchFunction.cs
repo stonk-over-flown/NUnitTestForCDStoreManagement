@@ -2,6 +2,7 @@ using NUnitTestForCDStoreManagement.Model;
 
 namespace NUnitTestingProject.Test_Package 
 {
+    [TestFixture]
     public class TestSearchFunction
     {
         private static readonly object[] SearchTestCases =

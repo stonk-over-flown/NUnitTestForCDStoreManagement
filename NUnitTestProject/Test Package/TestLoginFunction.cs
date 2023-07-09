@@ -2,6 +2,7 @@
 
 namespace NUnitTestingProject.Test_Package
 {
+    [TestFixture]
     public class TestLoginFunction
     {
         private static IEnumerable<TestCaseData> AccountLoginTestCases()
@@ -47,7 +48,7 @@ namespace NUnitTestingProject.Test_Package
             {
                
             };
-            yield return new TestCaseData(acc4, "Login Successfully!" + "(" + acc4.UserName + ")");
+            yield return new TestCaseData(acc4, "Please enter username and password" + "(" + acc4.UserName + ")");
         }
 
         [Test]

@@ -2,6 +2,7 @@
 
 namespace NUnitTestingProject.Test_Package
 {
+    [TestFixture]
     public class TestPhoneNumberRegex
     {
         private static IEnumerable<TestCaseData> PhoneNumberTestCases()
