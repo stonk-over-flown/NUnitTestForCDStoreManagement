@@ -177,15 +177,19 @@ namespace NUnitTestingProject.Test_Package
             Assert.AreEqual(expectedResult, result);
         }
 
-        [TestCase("example@fpt.edu.vn", true)]
-        [TestCase("example.first.middle.lastname@email.com", true)]
-        [TestCase("example@subdomain.email.com", true)]
-        [TestCase("0987654321@example.com", true)]
-        [TestCase("_______@email.com", true)]
-        [TestCase("example.firstname-lastname@email.com", true)]
-        [TestCase("abcde", false)]
-        [TestCase("@#@@##@%^%#$@#$@#.com", false)]
-        [Test]
+        
+        private static readonly object[] EmailTestCases =
+        {
+            new object[] { "example@fpt.edu.vn", true },
+            new object[] { "example.first.middle.lastname@email.com", true },
+            new object[] { "example@subdomain.email.com", true },
+            new object[] { "0987654321@example.com", true },
+            new object[] { "_______@email.com", true },
+            new object[] { "example.firstname-lastname@email.com", true },
+            new object[] { "abcde", false },
+            new object[] { "@#@@##@%^%#$@#$@#.com", false }
+        };
+        [Test, TestCaseSource(nameof(EmailTestCases))]
         public void CheckEmailRegex(string email, bool expectedResult)
         {
             var result = AccountService.isValid(email);
